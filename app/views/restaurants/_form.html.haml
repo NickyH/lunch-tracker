@@ -1,0 +1,16 @@
+.row
+  .large-4.columns
+    = form_for @restaurant, :remote => true do |f|
+      = f.label :name
+      = f.text_field :name, :autofocus => true
+      = f.label :address
+      = f.text_field :address
+      #tagform.row
+        .columns.large-9
+          =text_field_tag 'tags', nil, :placeholder => 'Tags.. burgers,italian'
+        .columns.large-2
+          =button_to_function('Add Tags',"app.add_tags()",:class=> 'button inline small', :id=>'add_tag')
+      #taglist
+      = button_to_function('Cancel', 'app.cancel_rest_form()', :class => 'button round alert tiny')
+      = f.submit 'Add', :class => 'button tiny success'
+  .large-8.columns

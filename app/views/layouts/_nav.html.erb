@@ -1,0 +1,14 @@
+<% if @auth.present? && @auth.is_admin? %>
+  <%= link_to('Add Restaurant', new_restaurant_path, :remote => true) %>
+<% end %>
+<% if @auth.present? %>
+  <%= link_to((@auth.name + ' | Logout'), login_path, :method => 'delete', :remote => true) %>
+<% else %>
+  <%= link_to('Login', login_path, :remote => true, :"data-dropdown" => 'drop') %>
+<% end %>
+
+<% if @auth.nil? %>
+  <div id = 'drop', class = 'f-dropdown content'>
+  <%= render :partial => 'session/form' %>
+  </div>
+<% end %>

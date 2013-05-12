@@ -1,0 +1,14 @@
+- if @restaurants.present?
+  %table
+    %tr
+      %th Name
+      %th Location
+      %th Value
+    - @restaurants.each do |restaurant|
+      %tr
+        %td= restaurant.name
+        %td= restaurant.address
+        %td= restaurant.value_rating
+        %td
+          - restaurant.tags.each do |tag|
+            = link_to tag.name, filter_restaurants_path(tag.id), :remote => true, :class => 'button tiny radius'
