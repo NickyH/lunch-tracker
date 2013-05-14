@@ -11,7 +11,15 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    restaurant = Restaurant.create(name:params[:name]) if params[:name].present?
+    @tags = params[:tags].uniq
+    if !params[:name].nil?
+      restaurant = Restaurant.create(name:params[:name], address:params[:address])
+      @tags.each do |tag|
+        new_tag = Tag.create(:name => tag)
+        restaurant.tags << new_tag
+      end
+      restaurant.save
+    end
     @restaurants = Restaurant.order(:name)
   end
 

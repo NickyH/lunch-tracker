@@ -15,4 +15,10 @@ LunchTracker::Application.routes.draw do
 
   resources :tags, :only => [:create]
 
+  resources :reviews do
+    collection do
+      get '/show/:restaurant_id' => 'reviews#show'
+    end
+  end
+
 end

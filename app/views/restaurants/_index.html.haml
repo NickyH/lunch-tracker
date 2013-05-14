@@ -4,11 +4,13 @@
       %th Name
       %th Location
       %th Value
+      %th Reviews
     - @restaurants.each do |restaurant|
-      %tr
+      %tr{:id => restaurant.id}
         %td= restaurant.name
         %td= restaurant.address
         %td= restaurant.value_rating
         %td
           - restaurant.tags.each do |tag|
             = link_to tag.name, filter_restaurants_path(tag.id), :remote => true, :class => 'button tiny radius'
+        %td= link_to_function('Read Reviews', "app.show_reviews(" + "#{restaurant.id}" + ")")

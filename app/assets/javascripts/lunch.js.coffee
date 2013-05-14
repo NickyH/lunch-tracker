@@ -16,11 +16,11 @@ window.app =
         url: "/restaurants"
       $.ajax(settings)
     else
-    settings =
-      dataType: 'script'
-      type: 'get'
-      url: "/restaurants/search?query=#{query}"
-    $.ajax(settings)
+      settings =
+        dataType: 'script'
+        type: 'get'
+        url: "/restaurants/search?query=#{query}"
+      $.ajax(settings)
 
   display_map: (lat, lng, zoom) ->
     mapOptions =
@@ -58,7 +58,7 @@ window.app =
     else
       name = $('#name').val()
       address = app.selected_address
-      tags = $('#taglist').text()
+      tags = app.tags
       data = {address: address, name:name, tags: tags}
       settings =
         dataType: 'script'
@@ -66,7 +66,9 @@ window.app =
         data: data
         url: "/restaurants"
       $.ajax(settings)
-      app.cancel_rest_form()
+      $('#rest_form').empty()
+      app.selected_address = null
+      app.tags = []
 
 
   validate_address: ->
@@ -82,5 +84,14 @@ window.app =
     console.log('select')
     app.selected_address = $('#valid_address').text()
 
+  show_reviews: (id) ->
+    restaurant_id = id
+    row_id = '#row' + id
+    console.log(restaurant_id)
+    settings =
+      dataType: 'script'
+      type: 'get'
+      url: "/reviews/show/#{restaurant_id}"
+    $.ajax(settings)
 
 $(document).ready(app.ready)

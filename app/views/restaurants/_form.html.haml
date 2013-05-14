@@ -9,10 +9,10 @@
     #tagform
       .tagbutton.orange= link_to_function('V', 'app.select_tag(this)', :id => 'veg')
       .tagbutton.green= link_to_function('F', 'app.select_tag(this)', :id => 'cheap')
-      = link_to_function(image_tag(''), 'app.select_tag(this)', :id => 'fast')
-      = link_to_function(image_tag(''), 'app.select_tag(this)', :id => 'fancy')
-      = link_to_function(image_tag(''), 'app.select_tag(this)', :id => 'groups')
-      = link_to_function(image_tag(''), 'app.select_tag(this)', :id => 'healthy')
+      .tagbutton.green= link_to_function('$', 'app.select_tag(this)', :id => 'fast')
+      .tagbutton.green= link_to_function('$$$', 'app.select_tag(this)', :id => 'fancy')
+      .tagbutton.green= link_to_function('G', 'app.select_tag(this)', :id => 'groups')
+      .tagbutton.green= link_to_function('H', 'app.select_tag(this)', :id => 'healthy')
     #taglist
     = button_to_function('Cancel', 'app.cancel_rest_form()', :class => 'button round alert tiny')
     = button_to_function('Add', 'app.create_restaurant()', :class => 'button round alert tiny')

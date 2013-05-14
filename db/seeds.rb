@@ -24,6 +24,14 @@ t4 = Tag.create(name: 'slow lunch')
 t5 = Tag.create(name: 'good for groups')
 t6 = Tag.create(name: 'long lines')
 
+v1 = Review.create(content: 'a very positive review')
+v2 = Review.create(content: 'another positive review')
+v3 = Review.create(content: 'a terrible review')
+v4 = Review.create(content: 'an average review')
+
+r1.reviews = [v1, v2, v3, v4]
+
+
 
 r1.tags = [t1, t5]
 r2.tags = [t2, t3]
