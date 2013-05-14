@@ -1,16 +1,19 @@
 .row
   .large-4.columns
-    = form_for @restaurant, :remote => true do |f|
-      = f.label :name
-      = f.text_field :name, :autofocus => true
-      = f.label :address
-      = f.text_field :address
-      #tagform.row
-        .columns.large-9
-          =text_field_tag 'tags', nil, :placeholder => 'Tags.. burgers,italian'
-        .columns.large-2
-          =button_to_function('Add Tags',"app.add_tags()",:class=> 'button inline small', :id=>'add_tag')
-      #taglist
-      = button_to_function('Cancel', 'app.cancel_rest_form()', :class => 'button round alert tiny')
-      = f.submit 'Add', :class => 'button tiny success'
+    = label_tag :name
+    = text_field_tag 'name', nil, :autofocus => true, :placeholder => 'Restaurant Name'
+    = label_tag :address
+    = text_field_tag :approx_address, nil, :placeholder => 'Address'
+    = button_to_function('Find', 'app.validate_address()')
+    #show_address= render 'found_address' if @found_address.present?
+    #tagform
+      .tagbutton.orange= link_to_function('V', 'app.select_tag(this)', :id => 'veg')
+      .tagbutton.green= link_to_function('F', 'app.select_tag(this)', :id => 'cheap')
+      = link_to_function(image_tag(''), 'app.select_tag(this)', :id => 'fast')
+      = link_to_function(image_tag(''), 'app.select_tag(this)', :id => 'fancy')
+      = link_to_function(image_tag(''), 'app.select_tag(this)', :id => 'groups')
+      = link_to_function(image_tag(''), 'app.select_tag(this)', :id => 'healthy')
+    #taglist
+    = button_to_function('Cancel', 'app.cancel_rest_form()', :class => 'button round alert tiny')
+    = button_to_function('Add', 'app.create_restaurant()', :class => 'button round alert tiny')
   .large-8.columns

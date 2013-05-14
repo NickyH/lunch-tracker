@@ -5,6 +5,16 @@ class RestaurantsController < ApplicationController
   def new
     @restaurant = Restaurant.new
   end
+  def validate_address
+    address_to_validate = params[:query]
+    @found_address = Restaurant.validate_address(address_to_validate)
+  end
+
+  def create
+    restaurant = Restaurant.create(name:params[:name]) if params[:name].present?
+    @restaurants = Restaurant.order(:name)
+  end
+
   def filter
   tag = Tag.find(params[:tag_id])
   @restaurants = tag.restaurants

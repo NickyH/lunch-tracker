@@ -1,6 +1,6 @@
 = form_tag login_path do
   = label_tag :email
-  = text_field_tag :email, :autofocus => true
+  = text_field_tag :email, nil, :autofocus => true
   = label_tag :password
   = password_field_tag :password
   = button_to_function('Cancel', 'app.cancel_login_form()', :class => 'button round alert tiny')

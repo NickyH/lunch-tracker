@@ -1,0 +1,5 @@
+- if @found_address == 'none'
+  = 'Not a valid address, please re-enter a valid street address'
+- else
+  #valid_address= @found_address.join(' ')
+  = link_to_function('Select', 'app.select_address()')

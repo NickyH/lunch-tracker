@@ -1,9 +1,10 @@
 window.app =
   map: null
   markers: []
+  tags: []
+  selected_address: null
   ready: ->
     app.token = $('#auth_token').data('auth-token')
-    $('#form').on('click', 'a[data-clear-form]', app.clear_form)
     $('body').on('keyup', '#search', app.filter_restaurants)
 
   filter_restaurants: (e) ->
@@ -43,13 +44,43 @@ window.app =
 
   cancel_rest_form: ->
     $('#rest_form').empty()
+    app.selected_address = null
 
-  add_tags: ->
-    tags = $('#tags').val()
+  select_tag: (selected_tag) ->
+    tag = $(selected_tag).attr('id')
+    console.log(tag)
+    app.tags.push tag
+    console.log(app.tags)
+
+  create_restaurant:(e)->
+    if app.selected_address == null
+      $('#address_not_selected').removeClass('hide')
+    else
+      name = $('#name').val()
+      address = app.selected_address
+      tags = $('#taglist').text()
+      data = {address: address, name:name, tags: tags}
+      settings =
+        dataType: 'script'
+        method: 'POST'
+        data: data
+        url: "/restaurants"
+      $.ajax(settings)
+      app.cancel_rest_form()
+
+
+  validate_address: ->
+    console.log('validate')
+    address = $('#approx_address').val()
     settings =
       dataType: 'script'
-      method: 'POST'
-      url: "/tags?tags=#{tags}"
+      type: 'get'
+      url: "/restaurants/validate_address?query=#{address}"
     $.ajax(settings)
+
+  select_address: ->
+    console.log('select')
+    app.selected_address = $('#valid_address').text()
+
 
 $(document).ready(app.ready)

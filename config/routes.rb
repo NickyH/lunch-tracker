@@ -8,6 +8,7 @@ LunchTracker::Application.routes.draw do
   resources :restaurants do
     collection do
       get 'search'
+      get 'validate_address'
       get 'filter/:tag_id', :action => :filter, :as => :filter
     end
   end

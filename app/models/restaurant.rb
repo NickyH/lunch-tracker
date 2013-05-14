@@ -17,6 +17,19 @@ class Restaurant < ActiveRecord::Base
   has_many :reviews
   has_and_belongs_to_many :tags
   before_save :geocode
+
+  def self.validate_address(address)
+    valid_address = Geocoder.search(address).first
+    short_address = []
+    if valid_address.nil?
+      short_address = 'none'
+    else
+      valid_address.address_components.each do |a|
+        short_address << a["short_name"]
+      end
+    end
+    return short_address
+  end
   private
   def geocode
     result = Geocoder.search(self.address).first
