@@ -1,0 +1,5 @@
+$('#rest_form').empty().append('<%=j render :partial =>'restaurants/form'%>');
+$('#name').val('<%= @restaurant.name %>');
+$('#approx_address').val('<%= @restaurant.address %>');
+$('#show_address').val('<%= @restaurant.address %>');
+

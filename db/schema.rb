@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130511225739) do
     t.string  "name"
     t.string  "address"
     t.string  "cuisine"
+    t.boolean "thumbs_down",  :default => false
     t.float   "lat"
     t.float   "long"
     t.integer "value_rating"
@@ -37,7 +38,6 @@ ActiveRecord::Schema.define(:version => 20130511225739) do
   create_table "reviews", :force => true do |t|
     t.date    "date"
     t.text    "content"
-    t.boolean "thumbs_down",   :default => false
     t.integer "value_rating",  :default => 0
     t.integer "user_id"
     t.integer "restaurant_id"

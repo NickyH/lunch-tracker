@@ -70,6 +70,21 @@ window.app =
       app.selected_address = null
       app.tags = []
 
+  update_restaurant:(e)->
+      name = $('#name').val()
+      id = $('#restaurant_id').val()
+      address = $('#show_address').val()
+      tags = app.tags
+      data = {address: address, name:name, tags: tags, id: id}
+      settings =
+        dataType: 'script'
+        method: 'PUT'
+        data: data
+        url: "/restaurants/#{id}"
+      $.ajax(settings)
+      $('#rest_form').empty()
+      app.selected_address = null
+      app.tags = []
 
   validate_address: ->
     console.log('validate')
@@ -92,6 +107,15 @@ window.app =
       dataType: 'script'
       type: 'get'
       url: "/reviews/show/#{restaurant_id}"
+    $.ajax(settings)
+
+  toggle_thumb: (e)->
+    id = $(e).data('rest-hidden')
+    console.log(id)
+    settings =
+      dataType: 'script'
+      method: 'put'
+      url: "/restaurants/toggle_thumb/#{id}"
     $.ajax(settings)
 
 $(document).ready(app.ready)

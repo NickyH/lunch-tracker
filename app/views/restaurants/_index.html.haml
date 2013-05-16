@@ -1,16 +1,39 @@
 - if @restaurants.present?
-  %table
-    %tr
-      %th Name
-      %th Location
-      %th Value
-      %th Reviews
-    - @restaurants.each do |restaurant|
-      %tr{:id => restaurant.id}
-        %td= restaurant.name
-        %td= restaurant.address
-        %td= restaurant.value_rating
-        %td
+  .row.restaurant_div
+    .large-3.columns
+      Name
+    .large-4.columns
+      Location
+    .large-3.columns
+      Tags
+    .large-2.columns
+  - @restaurants.each do |restaurant|
+    - if restaurant.thumbs_down == false
+      .row.restaurant_div
+        .large-3.columns
+          = restaurant.name
+          - if @auth.present?
+            = link_to('Edit', edit_restaurant_path(restaurant.id), :remote => true) if @auth.is_admin?
+            = link_to('Delete', restaurant_path(restaurant.id), :method => 'delete', :confirm => 'This will delete the restaurant. Click OK to continue', :remote => true) if @auth.is_admin?
+            #toggle_thumb= render :partial => 'restaurants/thumb', :locals => { :restaurant_id => restaurant.id, :thumb => restaurant.thumbs_down } if @auth.is_admin?
+        .large-4.columns
+          = restaurant.address
+        .large-3.columns
           - restaurant.tags.each do |tag|
-            = link_to tag.name, filter_restaurants_path(tag.id), :remote => true, :class => 'button tiny radius'
-        %td= link_to_function('Read Reviews', "app.show_reviews(" + "#{restaurant.id}" + ")")
+            = link_to tag.name, filter_restaurants_path(tag.id), :remote => true, :class => 'button tag_button'
+        .large-2.columns
+          = link_to("#{restaurant.reviews.length} Reviews", review_path(restaurant.id), :remote => true)
+    .row.review_div
+      .large-12.columns
+        - restaurant.reviews.each do |review|
+          .row.reviews.hide{:'data-rest-id' => restaurant.id }
+            .large-3.columns
+              = link_to('Comment', comment_path(review.id))
+            .large-9.columns
+              = review.content
+          - review.comments.each do |comment|
+            .row
+              .large-3.columns.comment_div
+              .large-9.columns.comment_div
+                .hide= comment.content
+

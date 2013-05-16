@@ -12,7 +12,7 @@
 #
 
 class Review < ActiveRecord::Base
-  attr_accessible :date, :content, :thumbs_down, :value_rating
+  attr_accessible :date, :content, :value_rating
   has_many :comments
   belongs_to :user
   belongs_to :restaurant

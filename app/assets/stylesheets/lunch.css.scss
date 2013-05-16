@@ -9,7 +9,7 @@
 }
 
 body{
-background-color: #FFE8B7;
+background-color: #F2E9D8;
 }
 .tcenter{
   text-align: center;
@@ -23,9 +23,57 @@ h1{
   font-weight: 300px;
 }
 
+#underlay
+{
+  background-color: #4C6173;
+  height: 100%;
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: 1px 3px 12px black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  padding-bottom: 50px;
+
+}
+
+.hide
+{
+  display: none;
+}
+
+.restaurant_div
+{
+  background-color: white;
+}
+
+.review_div
+{
+  background-color: #F2E9D8;
+  height: auto;
+}
+
+.comment_div
+{
+  background-color: #D9D1BA;
+}
+
+.tag_button
+{
+  font-size: 9px;
+  padding: 3px;
+  border-radius: 5px;
+}
+
 a
 {
   text-decoration: none;
+}
+
+#toggle_thumb img
+{
+  width: 15px;
+  height: 15px;
 }
 
 #map_canvas

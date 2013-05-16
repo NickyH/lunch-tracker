@@ -1,1 +1,3 @@
-$('#show_review').empty().append('<%=j render :partial =>'restaurants/review'%>');
+$('.row.reviews').slideUp().addClass('hide');
+$(".row[data-rest-id=<%= @restaurant.id %>]").removeClass('hide');
+

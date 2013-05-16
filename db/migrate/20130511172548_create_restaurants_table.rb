@@ -4,6 +4,7 @@ class CreateRestaurantsTable < ActiveRecord::Migration
       t.string :name
       t.string :address
       t.string :cuisine
+      t.boolean :thumbs_down, :default => false
       t.float :lat
       t.float :long
       t.integer :value_rating

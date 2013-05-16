@@ -5,7 +5,6 @@ Comment.delete_all
 Visit.delete_all
 Tag.delete_all
 
-
 u1 = User.create(name: 'Nicky', email: 'nickyhughes00@gmail.com', password: 'a', password_confirmation: 'a', is_admin: true)
 u2 = User.create(name: 'Danni', email: 'danni@gmail.com', password: 'a', password_confirmation: 'a')
 u3 = User.create(name: 'Lizzy', email: 'lizzy@gmail.com', password: 'a', password_confirmation: 'a')
@@ -24,14 +23,40 @@ t4 = Tag.create(name: 'slow lunch')
 t5 = Tag.create(name: 'good for groups')
 t6 = Tag.create(name: 'long lines')
 
-v1 = Review.create(content: 'a very positive review')
-v2 = Review.create(content: 'another positive review')
-v3 = Review.create(content: 'a terrible review')
-v4 = Review.create(content: 'an average review')
+v1 = Review.create(content: 'Maecenas fringilla lorem id libero cursus a commodo enim tempus. Vestibulum nec mi risus, at bibendum mauris. Praesent lacinia ligula in diam consectetur facilisis porta orci tincidunt. Nam scelerisque massa in sem blandit consequat hendrerit ante posuere. Vivamus pulvinar, erat ut auctor tristique, enim erat pharetra urna, ac convallis mauris ipsum vitae mauris. Vestibulum venenatis mollis turpis, eget tincidunt ante lacinia sit amet. Donec sed iaculis erat.')
+v2 = Review.create(content: 'Phasellus tristique porttitor turpis pharetra posuere. Aenean est est, consequat a varius ac, malesuada in erat. Suspendisse tristique, mauris at viverra molestie, sem nisl convallis massa, et accumsan massa lorem non tellus. Donec sed nunc nec justo porttitor elementum. Vivamus non magna in odio adipiscing dapibus. Phasellus suscipit metus in dui dapibus non ultricies enim hendrerit. Duis fermentum dignissim mauris at dapibus. Vestibulum malesuada leo quis augue porta venenatis. Curabitur adipiscing orci sed libero rutrum sed semper leo rhoncus. Aliquam eleifend enim quis arcu pretium placerat. Nunc vel tortor nec erat semper aliquet et quis tortor.')
+v3 = Review.create(content: 'Maecenas fringilla lorem id libero cursus a commodo enim tempus. Vestibulum nec mi risus, at bibendum mauris. Praesent lacinia ligula in diam consectetur facilisis porta orci tincidunt. Nam scelerisque massa in sem blandit consequat hendrerit ante posuere. Vivamus pulvinar, erat ut auctor tristique, enim erat pharetra urna, ac convallis mauris ipsum vitae mauris. Vestibulum venenatis mollis turpis, eget tincidunt ante lacinia sit amet. Donec sed iaculis erat.')
+v4 = Review.create(content: 'Phasellus tristique porttitor turpis pharetra posuere. Aenean est est, consequat a varius ac, malesuada in erat. Suspendisse tristique, mauris at viverra molestie, sem nisl convallis massa, et accumsan massa lorem non tellus. Donec sed nunc nec justo porttitor elementum. Vivamus non magna in odio adipiscing dapibus. Phasellus suscipit metus in dui dapibus non ultricies enim hendrerit. Duis fermentum dignissim mauris at dapibus. Vestibulum malesuada leo quis augue porta venenatis. Curabitur adipiscing orci sed libero rutrum sed semper leo rhoncus. Aliquam eleifend enim quis arcu pretium placerat. Nunc vel tortor nec erat semper aliquet et quis tortor.')
 
-r1.reviews = [v1, v2, v3, v4]
+c1 = Comment.create(content: 'this is a comment that is of medium length')
+c2 = Comment.create(content: 'this is a comment that is of average length')
+c3 = Comment.create(content: 'this is a comment that is of a very very very very long long length')
+c4 = Comment.create(content: 'this is a short comment')
+c5 = Comment.create(content: 'more comments for this restaurant')
+c6 = Comment.create(content: 'so many comments here')
+
+v1.comments = [c1, c2, c3]
+v1.save
+v2.comments = [c4, c5, c6]
+v2.save
+v3.comments = [c2, c3, c4]
+v3.save
+v4.comments = [c5, c1, c2]
+v4.save
 
 
+r1.reviews = [v1, v2]
+r1.save
+r2.reviews = [v2, v3]
+r2.save
+r3.reviews = [v3, v4]
+r3.save
+r4.reviews = [v1, v2]
+r4.save
+r5.reviews = [v2, v3]
+r5.save
+r6.reviews = [v1, v4]
+r6.save
 
 r1.tags = [t1, t5]
 r2.tags = [t2, t3]

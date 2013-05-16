@@ -11,18 +11,32 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @tags = params[:tags].uniq
+    @tags = params[:tags].uniq if params[:tags].present?
     if !params[:name].nil?
       restaurant = Restaurant.create(name:params[:name], address:params[:address])
-      @tags.each do |tag|
-        new_tag = Tag.create(:name => tag)
-        restaurant.tags << new_tag
+      if !@tags.nil?
+        @tags.each do |tag|
+          new_tag = Tag.create(:name => tag)
+          restaurant.tags << new_tag
+        end
       end
       restaurant.save
     end
     @restaurants = Restaurant.order(:name)
   end
-
+  def destroy
+    Restaurant.find(params[:id]).destroy
+    @restaurants = Restaurant.order(:name)
+    render :update
+  end
+  def update
+    restaurant = Restaurant.find(params[:id])
+    restaurant.update_attributes(:name => params[:name], :address => params[:address])
+    @restaurants = Restaurant.order(:name)
+  end
+  def edit
+    @restaurant = Restaurant.find(params[:id])
+  end
   def filter
   tag = Tag.find(params[:tag_id])
   @restaurants = tag.restaurants
@@ -32,21 +46,15 @@ class RestaurantsController < ApplicationController
   @restaurants = Restaurant.where("name @@ :q", :q => query)
   render :filter
   end
+  def toggle_thumb
+    restaurant = Restaurant.find(params[:id])
+    if restaurant.thumbs_down == false
+      restaurant.thumbs_down = true
+    else
+      restaurant.thumbs_down = false
+    end
+    restaurant.save
+    @restaurants = Restaurant.order(:name)
+    render :index
+  end
 end
-
-
-# query = params[:query]
-#     @quizzes = Quiz.where("name @@ :q", :q => query)
-
-#     tags = Tag.where("name @@ :q", :q => query)
-#     @quizzes += tags.map(&:quizzes).flatten
-
-#     options = Option.where("answer @@ :q", :q => query)
-#     @quizzes += options.map(&:exercise).compact.map(&:quiz).flatten
-
-#      exercises = Exercise.where("question @@ :q", :q => query)
-#     @quizzes += exercises.map(&:quiz).flatten
-
-#     people = Person.where("name @@ :q", :q => query)
-#     @quizzes += people.map(&:quizzes).flatten
-#     @quizzes.uniq!

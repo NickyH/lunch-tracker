@@ -15,6 +15,7 @@ class SessionController < ApplicationController
   end
   def destroy
     session[:user_id] = nil
+    @restaurants = Restaurant.order(:name)
     authenticate
   end
 end

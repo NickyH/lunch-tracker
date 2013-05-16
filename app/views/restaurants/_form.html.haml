@@ -14,6 +14,8 @@
       .tagbutton.green= link_to_function('G', 'app.select_tag(this)', :id => 'groups')
       .tagbutton.green= link_to_function('H', 'app.select_tag(this)', :id => 'healthy')
     #taglist
+    = hidden_field_tag :restaurant_id, @restaurant.id if @restaurant.present?
     = button_to_function('Cancel', 'app.cancel_rest_form()', :class => 'button round alert tiny')
-    = button_to_function('Add', 'app.create_restaurant()', :class => 'button round alert tiny')
+    = button_to_function('Add', 'app.create_restaurant()', :class => 'button round alert tiny') if !@restaurnat.present?
+    = button_to_function('Update', 'app.update_restaurant()', :class => 'button round alert tiny') if @restaurant.present?
   .large-8.columns
