@@ -3,5 +3,5 @@
   = text_field_tag :email, nil, :autofocus => true
   = label_tag :password
   = password_field_tag :password
-  = button_to_function('Cancel', 'app.cancel_login_form()', :class => 'button round alert tiny')
-  = submit_tag 'Login', :class => 'button round success tiny', :remote => true
+  = button_to_function('Cancel', 'app.cancel_login_form()', :class => 'button cancel_btn')
+  = submit_tag 'Login', :class => 'button submit_btn', :remote => true

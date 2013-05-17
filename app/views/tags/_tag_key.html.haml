@@ -1,0 +1,8 @@
+#key
+  -@tags.each do |tag|
+    .row
+      = link_to tag.tag_symbol, filter_restaurants_path(tag.id), :remote => true, :id => "#{tag.name}", :class => "tagbutton #{tag.name}"
+      = tag.name
+  .row
+    .tagbutton= ''
+    = link_to 'Show All', restaurants_path, :remote => true

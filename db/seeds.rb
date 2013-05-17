@@ -16,12 +16,12 @@ r4 = Restaurant.create(name: "Jo's", address: '264 Elizabeth Street, New York', 
 r5 = Restaurant.create(name: 'Fiat Cafe', address: '203 Mott Street, New York', lat: 40.721444, long: -73.995617, value_rating: 5)
 r6 = Restaurant.create(name: 'Back Forty West', address: '70 Prince Street, New York', lat: 40.723697, long: -73.996986, value_rating: 8)
 
-t1 = Tag.create(name: 'healthy')
-t2 = Tag.create(name: 'burgers')
-t3 = Tag.create(name: 'fast')
-t4 = Tag.create(name: 'slow lunch')
-t5 = Tag.create(name: 'good for groups')
-t6 = Tag.create(name: 'long lines')
+t1 = Tag.create(name: 'vegetarian', tag_symbol: 'V')
+t2 = Tag.create(name: 'fast', tag_symbol: 'F')
+t3 = Tag.create(name: 'cheap', tag_symbol: '$')
+t4 = Tag.create(name: 'expensive', tag_symbol: '$$')
+t5 = Tag.create(name: 'groups', tag_symbol: 'G')
+t6 = Tag.create(name: 'healthy', tag_symbol: 'H')
 
 v1 = Review.create(content: 'Maecenas fringilla lorem id libero cursus a commodo enim tempus. Vestibulum nec mi risus, at bibendum mauris. Praesent lacinia ligula in diam consectetur facilisis porta orci tincidunt. Nam scelerisque massa in sem blandit consequat hendrerit ante posuere. Vivamus pulvinar, erat ut auctor tristique, enim erat pharetra urna, ac convallis mauris ipsum vitae mauris. Vestibulum venenatis mollis turpis, eget tincidunt ante lacinia sit amet. Donec sed iaculis erat.')
 v2 = Review.create(content: 'Phasellus tristique porttitor turpis pharetra posuere. Aenean est est, consequat a varius ac, malesuada in erat. Suspendisse tristique, mauris at viverra molestie, sem nisl convallis massa, et accumsan massa lorem non tellus. Donec sed nunc nec justo porttitor elementum. Vivamus non magna in odio adipiscing dapibus. Phasellus suscipit metus in dui dapibus non ultricies enim hendrerit. Duis fermentum dignissim mauris at dapibus. Vestibulum malesuada leo quis augue porta venenatis. Curabitur adipiscing orci sed libero rutrum sed semper leo rhoncus. Aliquam eleifend enim quis arcu pretium placerat. Nunc vel tortor nec erat semper aliquet et quis tortor.')

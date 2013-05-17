@@ -51,12 +51,22 @@ window.app =
   cancel_rest_form: ->
     $('#rest_form').empty()
     app.selected_address = null
+    $('.tagbutton').css('border', 'none')
+    app.tags = []
 
   select_tag: (selected_tag) ->
-    tag = $(selected_tag).attr('id')
-    console.log(tag)
-    app.tags.push tag
-    console.log(app.tags)
+    if $(selected_tag).parent().hasClass('selected')
+      $(selected_tag).parent().removeClass('selected')
+      $(selected_tag).parent().css('border', 'none').css('opacity', '1')
+      tag = $(selected_tag).attr('id')
+      index = app.tags.indexOf(tag)
+      app.tags.splice(index, 1)
+    else
+      tag = $(selected_tag).attr('id')
+      $(selected_tag).parent().css( {border: '3px solid #593157', opacity: '0.7'} )
+      $(selected_tag).parent().addClass('selected')
+      app.tags.push tag
+      console.log(app.tags)
 
   create_restaurant:(e)->
     if app.selected_address == null
@@ -141,6 +151,32 @@ window.app =
       url: "/reviews"
     $.ajax(settings)
     app.cancel_review_form()
+
+  new_comment_form: (e) ->
+    id = $(e).data('rev')
+    console.log(id)
+    settings =
+      dataType: 'script'
+      method: 'get'
+      url: "/comments/new/comment/#{id}"
+    $.ajax(settings)
+
+  cancel_comment_form: ->
+    $('#comment_form').empty()
+    $('.row.comments').slideUp().addClass('hide')
+    $('.show_comment_content').addClass('hide')
+
+  submit_comment_form: (e) ->
+    review_id = $(e).next('#rev_id').val()
+    content = $(e).prev('#comment_content').val()
+    data = { review_id: review_id, content: content }
+    settings =
+      dataType: 'script'
+      method: 'post'
+      data: data
+      url: "/comments"
+    $.ajax(settings)
+    app.cancel_comment_form()
 
   toggle_thumb: (e)->
     id = $(e).data('rest-hidden')

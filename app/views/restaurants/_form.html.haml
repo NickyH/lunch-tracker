@@ -1,21 +1,19 @@
 .row
   .large-4.columns
-    = label_tag :name
     = text_field_tag 'name', nil, :autofocus => true, :placeholder => 'Restaurant Name'
-    = label_tag :address
     = text_field_tag :approx_address, nil, :placeholder => 'Address'
-    = button_to_function('Find', 'app.validate_address()')
+    = button_to_function('Find', 'app.validate_address()', :class => 'button find_btn')
     #show_address= render 'found_address' if @found_address.present?
     #tagform
-      .tagbutton.orange= link_to_function('V', 'app.select_tag(this)', :id => 'veg')
-      .tagbutton.green= link_to_function('F', 'app.select_tag(this)', :id => 'cheap')
-      .tagbutton.green= link_to_function('$', 'app.select_tag(this)', :id => 'fast')
-      .tagbutton.green= link_to_function('$$$', 'app.select_tag(this)', :id => 'fancy')
-      .tagbutton.green= link_to_function('G', 'app.select_tag(this)', :id => 'groups')
-      .tagbutton.green= link_to_function('H', 'app.select_tag(this)', :id => 'healthy')
+      .tagbutton.vegetarian= link_to_function('V', 'app.select_tag(this)', :id => 'veg', :title => 'vegetarian')
+      .tagbutton.fast= link_to_function('F', 'app.select_tag(this)', :id => 'fast', :title => 'fast')
+      .tagbutton.cheap= link_to_function('$', 'app.select_tag(this)', :id => 'cheap', :title => 'cheap')
+      .tagbutton.expensive= link_to_function('$$', 'app.select_tag(this)', :id => 'exp', :title => 'expensive')
+      .tagbutton.groups= link_to_function('G', 'app.select_tag(this)', :id => 'groups', :title => 'groups')
+      .tagbutton.healthy= link_to_function('H', 'app.select_tag(this)', :id => 'healthy', :title => 'healthy')
     #taglist
     = hidden_field_tag :restaurant_id, @restaurant.id if @restaurant.present?
-    = button_to_function('Cancel', 'app.cancel_rest_form()', :class => 'button round alert tiny')
-    = button_to_function('Add', 'app.create_restaurant()', :class => 'button round alert tiny') if !@restaurnat.present?
-    = button_to_function('Update', 'app.update_restaurant()', :class => 'button round alert tiny') if @restaurant.present?
+    = button_to_function('Cancel', 'app.cancel_rest_form()', :class => 'button cancel_btn')
+    = button_to_function('Add', 'app.create_restaurant()', :class => 'button submit_btn') if !@restaurnat.present?
+    = button_to_function('Update', 'app.update_restaurant()', :class => 'button submit_btn') if @restaurant.present?
   .large-8.columns

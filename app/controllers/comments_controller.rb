@@ -1,10 +1,11 @@
 class CommentsController < ApplicationController
-  def index
-  end
   def show
   end
-  def update
-  end
   def destroy
+  end
+  def new
+    @review = Review.find(params[:review_id])
+  end
+  def create
   end
 end

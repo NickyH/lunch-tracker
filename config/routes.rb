@@ -15,7 +15,11 @@ LunchTracker::Application.routes.draw do
   end
 
   resources :tags, :only => [:create]
-  resources :comments, :only => [:create, :update, :show, :destroy]
+  resources :comments do
+    collection do
+      get '/new/comment/:review_id' => 'comments#new'
+    end
+  end
   resources :reviews do
     collection do
       get '/show/:restaurant_id' => 'reviews#show'

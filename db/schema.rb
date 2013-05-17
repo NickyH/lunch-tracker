@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20130511225739) do
     t.string  "name"
     t.integer "restaurant_id"
     t.integer "review_id"
+    t.string  "tag_symbol"
   end
 
   create_table "users", :force => true do |t|
