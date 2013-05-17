@@ -7,12 +7,13 @@
 #  name            :string(255)
 #  password_digest :string(255)
 #  lat             :float
+#  long            :float
 #  address         :text
 #  is_admin        :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :location, :is_admin
+  attr_accessible :name, :email, :password, :password_confirmation, :address, :lat, :long, :is_admin
   has_many :visits
   has_many :reviews
   has_many :comments

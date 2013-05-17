@@ -19,6 +19,7 @@ LunchTracker::Application.routes.draw do
   resources :reviews do
     collection do
       get '/show/:restaurant_id' => 'reviews#show'
+      get '/new/review/:restaurant_id' => 'reviews#new'
     end
   end
 

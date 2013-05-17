@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20130511225739) do
     t.string  "name"
     t.string  "password_digest"
     t.float   "lat"
+    t.float   "long"
     t.text    "address"
     t.boolean "is_admin",        :default => false
   end

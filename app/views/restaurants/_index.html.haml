@@ -8,7 +8,7 @@
       Tags
     .large-2.columns
   - @restaurants.each do |restaurant|
-    - if restaurant.thumbs_down == false
+    - if restaurant.thumbs_down == false || @auth.present? && @auth.is_admin? && restaurant.thumbs_down == true
       .row.restaurant_div
         .large-3.columns
           = restaurant.name
@@ -17,23 +17,24 @@
             = link_to('Delete', restaurant_path(restaurant.id), :method => 'delete', :confirm => 'This will delete the restaurant. Click OK to continue', :remote => true) if @auth.is_admin?
             #toggle_thumb= render :partial => 'restaurants/thumb', :locals => { :restaurant_id => restaurant.id, :thumb => restaurant.thumbs_down } if @auth.is_admin?
         .large-4.columns
-          = restaurant.address
+          .address_link= link_to(restaurant.address, '#', :remote => true, :'data-address-id' => "address#{restaurant.id}")
         .large-3.columns
           - restaurant.tags.each do |tag|
             = link_to tag.name, filter_restaurants_path(tag.id), :remote => true, :class => 'button tag_button'
         .large-2.columns
           = link_to("#{restaurant.reviews.length} Reviews", review_path(restaurant.id), :remote => true)
+          = link_to_function("Add a Review", 'app.new_review_form(this)', :remote => true, :'data-rest' => restaurant.id)
     .row.review_div
       .large-12.columns
         - restaurant.reviews.each do |review|
           .row.reviews.hide{:'data-rest-id' => restaurant.id }
+            #review_form
             .large-3.columns
-              = link_to('Comment', comment_path(review.id))
+              .comment_link.hide= link_to('Comment', comment_path(review.id))
             .large-9.columns
-              = review.content
+              .show_review_content.hide= review.content
           - review.comments.each do |comment|
             .row
               .large-3.columns.comment_div
               .large-9.columns.comment_div
                 .hide= comment.content
-

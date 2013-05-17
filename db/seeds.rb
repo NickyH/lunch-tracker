@@ -5,9 +5,9 @@ Comment.delete_all
 Visit.delete_all
 Tag.delete_all
 
-u1 = User.create(name: 'Nicky', email: 'nickyhughes00@gmail.com', password: 'a', password_confirmation: 'a', is_admin: true)
-u2 = User.create(name: 'Danni', email: 'danni@gmail.com', password: 'a', password_confirmation: 'a')
-u3 = User.create(name: 'Lizzy', email: 'lizzy@gmail.com', password: 'a', password_confirmation: 'a')
+u1 = User.create(name: 'Nicky', email: 'nickyhughes00@gmail.com', password: 'a', password_confirmation: 'a', is_admin: true, address: '568 Broadway Manhattan', lat: 40.724364, long: -73.997458)
+u2 = User.create(name: 'Danni', email: 'danni@gmail.com', password: 'a', password_confirmation: 'a', address: '568 Broadway Manhattan', lat: 40.724364, long: -73.997458)
+u3 = User.create(name: 'Lizzy', email: 'lizzy@gmail.com', password: 'a', password_confirmation: 'a', address: '568 Broadway Manhattan', lat: 40.724364, long: -73.997458)
 
 r1 = Restaurant.create(name: 'The Mercer Kitchen', address: '99 Prince Street, New York', lat: 40.724750, long: -73.998719, value_rating: 5)
 r2 = Restaurant.create(name: 'Macbar', address: '54 Prince Street, New York', lat: 40.723505, long: -73.996175, value_rating: 7)
@@ -27,6 +27,10 @@ v1 = Review.create(content: 'Maecenas fringilla lorem id libero cursus a commodo
 v2 = Review.create(content: 'Phasellus tristique porttitor turpis pharetra posuere. Aenean est est, consequat a varius ac, malesuada in erat. Suspendisse tristique, mauris at viverra molestie, sem nisl convallis massa, et accumsan massa lorem non tellus. Donec sed nunc nec justo porttitor elementum. Vivamus non magna in odio adipiscing dapibus. Phasellus suscipit metus in dui dapibus non ultricies enim hendrerit. Duis fermentum dignissim mauris at dapibus. Vestibulum malesuada leo quis augue porta venenatis. Curabitur adipiscing orci sed libero rutrum sed semper leo rhoncus. Aliquam eleifend enim quis arcu pretium placerat. Nunc vel tortor nec erat semper aliquet et quis tortor.')
 v3 = Review.create(content: 'Maecenas fringilla lorem id libero cursus a commodo enim tempus. Vestibulum nec mi risus, at bibendum mauris. Praesent lacinia ligula in diam consectetur facilisis porta orci tincidunt. Nam scelerisque massa in sem blandit consequat hendrerit ante posuere. Vivamus pulvinar, erat ut auctor tristique, enim erat pharetra urna, ac convallis mauris ipsum vitae mauris. Vestibulum venenatis mollis turpis, eget tincidunt ante lacinia sit amet. Donec sed iaculis erat.')
 v4 = Review.create(content: 'Phasellus tristique porttitor turpis pharetra posuere. Aenean est est, consequat a varius ac, malesuada in erat. Suspendisse tristique, mauris at viverra molestie, sem nisl convallis massa, et accumsan massa lorem non tellus. Donec sed nunc nec justo porttitor elementum. Vivamus non magna in odio adipiscing dapibus. Phasellus suscipit metus in dui dapibus non ultricies enim hendrerit. Duis fermentum dignissim mauris at dapibus. Vestibulum malesuada leo quis augue porta venenatis. Curabitur adipiscing orci sed libero rutrum sed semper leo rhoncus. Aliquam eleifend enim quis arcu pretium placerat. Nunc vel tortor nec erat semper aliquet et quis tortor.')
+v5 = Review.create(content: 'Maecenas fringilla lorem id libero cursus a commodo enim tempus. Vestibulum nec mi risus, at bibendum mauris. Praesent lacinia ligula in diam consectetur facilisis porta orci tincidunt. Nam scelerisque massa in sem blandit consequat hendrerit ante posuere. Vivamus pulvinar, erat ut auctor tristique, enim erat pharetra urna, ac convallis mauris ipsum vitae mauris. Vestibulum venenatis mollis turpis, eget tincidunt ante lacinia sit amet. Donec sed iaculis erat.')
+v6 = Review.create(content: 'Phasellus tristique porttitor turpis pharetra posuere. Aenean est est, consequat a varius ac, malesuada in erat. Suspendisse tristique, mauris at viverra molestie, sem nisl convallis massa, et accumsan massa lorem non tellus. Donec sed nunc nec justo porttitor elementum. Vivamus non magna in odio adipiscing dapibus. Phasellus suscipit metus in dui dapibus non ultricies enim hendrerit. Duis fermentum dignissim mauris at dapibus. Vestibulum malesuada leo quis augue porta venenatis. Curabitur adipiscing orci sed libero rutrum sed semper leo rhoncus. Aliquam eleifend enim quis arcu pretium placerat. Nunc vel tortor nec erat semper aliquet et quis tortor.')
+v7 = Review.create(content: 'Maecenas fringilla lorem id libero cursus a commodo enim tempus. Vestibulum nec mi risus, at bibendum mauris. Praesent lacinia ligula in diam consectetur facilisis porta orci tincidunt. Nam scelerisque massa in sem blandit consequat hendrerit ante posuere. Vivamus pulvinar, erat ut auctor tristique, enim erat pharetra urna, ac convallis mauris ipsum vitae mauris. Vestibulum venenatis mollis turpis, eget tincidunt ante lacinia sit amet. Donec sed iaculis erat.')
+v8 = Review.create(content: 'Phasellus tristique porttitor turpis pharetra posuere. Aenean est est, consequat a varius ac, malesuada in erat. Suspendisse tristique, mauris at viverra molestie, sem nisl convallis massa, et accumsan massa lorem non tellus. Donec sed nunc nec justo porttitor elementum. Vivamus non magna in odio adipiscing dapibus. Phasellus suscipit metus in dui dapibus non ultricies enim hendrerit. Duis fermentum dignissim mauris at dapibus. Vestibulum malesuada leo quis augue porta venenatis. Curabitur adipiscing orci sed libero rutrum sed semper leo rhoncus. Aliquam eleifend enim quis arcu pretium placerat. Nunc vel tortor nec erat semper aliquet et quis tortor.')
 
 c1 = Comment.create(content: 'this is a comment that is of medium length')
 c2 = Comment.create(content: 'this is a comment that is of average length')
@@ -47,15 +51,15 @@ v4.save
 
 r1.reviews = [v1, v2]
 r1.save
-r2.reviews = [v2, v3]
+r2.reviews = [v3, v4]
 r2.save
-r3.reviews = [v3, v4]
+r3.reviews = [v5]
 r3.save
-r4.reviews = [v1, v2]
+r4.reviews = [v6]
 r4.save
-r5.reviews = [v2, v3]
+r5.reviews = [v7]
 r5.save
-r6.reviews = [v1, v4]
+r6.reviews = [v8]
 r6.save
 
 r1.tags = [t1, t5]

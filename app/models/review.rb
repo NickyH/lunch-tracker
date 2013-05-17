@@ -5,7 +5,6 @@
 #  id            :integer          not null, primary key
 #  date          :date
 #  content       :text
-#  thumbs_down   :boolean          default(FALSE)
 #  value_rating  :integer          default(0)
 #  user_id       :integer
 #  restaurant_id :integer

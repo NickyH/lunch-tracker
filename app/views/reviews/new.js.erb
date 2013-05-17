@@ -1,0 +1,2 @@
+$('.row.reviews').slideUp().addClass('hide');
+$(".row[data-rest-id=<%= @restaurant.id %>]").slideDown().removeClass('hide').first().empty().append("<%=j render :partial => 'form', :locals => {:id => @restaurant.id } %>");

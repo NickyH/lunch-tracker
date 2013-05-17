@@ -27,12 +27,18 @@ window.app =
       center: new google.maps.LatLng(lat, lng)
       zoom: zoom
       mapTypeId: google.maps.MapTypeId.ROADMAP
-    canvas = $('#map_canvas')[0];
-    app.map = new google.maps.Map(canvas, mapOptions);
-  add_marker: (lat, lng, title) ->
-    latlng = new google.maps.LatLng(lat, lng);
-    marker = new google.maps.Marker({position: latlng, map: app.map, title: title});
-    app.markers.push(marker);
+    canvas = $('#map_canvas')[0]
+    app.map = new google.maps.Map(canvas, mapOptions)
+  add_marker: (lat, long, title) ->
+    latlng = new google.maps.LatLng(lat, long)
+    marker = new google.maps.Marker({position: latlng, map: app.map, title: title})
+    app.markers.push(marker)
+  # add_user_marker: (lat, long) ->
+  #   latlng = new google.maps.LatLng(lat, long)
+  #   marker = new google.maps.Marker({position: latlng, map: app.map})
+  #   marker.image = "http://www.google.com/intl/en_us/mapfiles/ms/micons/blue-dot.png"
+  #   app.markers.push(marker)
+  #   console.log(app.markers)
   clear_markers: ->
     marker.setMap(null) for marker in app.markers
     app.markers = []
@@ -108,6 +114,33 @@ window.app =
       type: 'get'
       url: "/reviews/show/#{restaurant_id}"
     $.ajax(settings)
+
+  new_review_form: (e) ->
+    id = $(e).data('rest')
+    console.log(id)
+    settings =
+      dataType: 'script'
+      method: 'get'
+      url: "/reviews/new/review/#{id}"
+    $.ajax(settings)
+
+  cancel_review_form: ->
+    $('#review_form').empty()
+    $('.row.reviews').slideUp().addClass('hide')
+    $('.show_review_content').addClass('hide')
+    $('.comment_link').addClass('hide')
+
+  submit_review_form: (e) ->
+    restaurant_id = $(e).next('#rev_rest_id').val()
+    content = $(e).prev('#review_content').val()
+    data = { restaurant_id: restaurant_id, content: content }
+    settings =
+      dataType: 'script'
+      method: 'post'
+      data: data
+      url: "/reviews"
+    $.ajax(settings)
+    app.cancel_review_form()
 
   toggle_thumb: (e)->
     id = $(e).data('rest-hidden')

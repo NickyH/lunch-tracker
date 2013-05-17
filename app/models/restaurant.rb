@@ -6,6 +6,7 @@
 #  name         :string(255)
 #  address      :string(255)
 #  cuisine      :string(255)
+#  thumbs_down  :boolean          default(FALSE)
 #  lat          :float
 #  long         :float
 #  value_rating :integer
