@@ -178,6 +178,15 @@ window.app =
     $.ajax(settings)
     app.cancel_comment_form()
 
+  show_comments: (e) ->
+    id = $(e).data('rev-comments')
+    console.log(id)
+    settings =
+      dataType: 'script'
+      method: 'get'
+      url: "/comments/#{id}"
+    $.ajax(settings)
+
   toggle_thumb: (e)->
     id = $(e).data('rest-hidden')
     console.log(id)

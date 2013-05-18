@@ -1,10 +1,11 @@
 .row
-  .large-4.columns
+  .large-6.columns
     = text_field_tag 'name', nil, :autofocus => true, :placeholder => 'Restaurant Name'
     = text_field_tag :approx_address, nil, :placeholder => 'Address'
     = button_to_function('Find', 'app.validate_address()', :class => 'button find_btn')
     #show_address= render 'found_address' if @found_address.present?
     #tagform
+      Select Tags:
       .tagbutton.vegetarian= link_to_function('V', 'app.select_tag(this)', :id => 'veg', :title => 'vegetarian')
       .tagbutton.fast= link_to_function('F', 'app.select_tag(this)', :id => 'fast', :title => 'fast')
       .tagbutton.cheap= link_to_function('$', 'app.select_tag(this)', :id => 'cheap', :title => 'cheap')
@@ -14,6 +15,6 @@
     #taglist
     = hidden_field_tag :restaurant_id, @restaurant.id if @restaurant.present?
     = button_to_function('Cancel', 'app.cancel_rest_form()', :class => 'button cancel_btn')
-    = button_to_function('Add', 'app.create_restaurant()', :class => 'button submit_btn') if !@restaurnat.present?
-    = button_to_function('Update', 'app.update_restaurant()', :class => 'button submit_btn') if @restaurant.present?
-  .large-8.columns
+    #rest_add= button_to_function('Add', 'app.create_restaurant()', :class => 'button submit_btn')
+    #rest_update= button_to_function('Update', 'app.update_restaurant()', :class => 'button submit_btn')
+  .large-6.columns

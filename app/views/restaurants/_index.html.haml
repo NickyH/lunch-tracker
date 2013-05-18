@@ -29,13 +29,10 @@
           .row.reviews.hide{:'data-rest-id' => restaurant.id }
             #review_form
             .large-3.columns
-              .comment_link.hide= link_to_function("Add a Comment", 'app.new_comment_form(this)', :remote => true, :'data-rev' => review.id)
+              .comment_link.links.hide= link_to_function("Add a Comment", 'app.new_comment_form(this)', :remote => true, :'data-rev' => review.id)
+              .comment_link.links.hide= link_to_function("See Comments", 'app.show_comments(this)', :remote => true, :'data-rev-comments' => review.id)
             .large-9.columns
               .show_review_content.hide= review.content
           - review.comments.each do |comment|
             .row.comments.hide{:'data-rev-id' => review.id }
-              #comment_form
-              .large-3.columns.comment_div
-              .large-9.columns.comment_div
-                .hide= comment.content
 

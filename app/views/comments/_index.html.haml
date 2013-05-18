@@ -1,0 +1,7 @@
+- if @comments.present?
+  .row
+    .large-3.columns
+    .large-9.columns
+      - @comments.each do |comment|
+        .row
+          .comment_div= comment.content

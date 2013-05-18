@@ -18,6 +18,7 @@ LunchTracker::Application.routes.draw do
   resources :comments do
     collection do
       get '/new/comment/:review_id' => 'comments#new'
+      get '/comments/:review_id' => 'comments#show'
     end
   end
   resources :reviews do

@@ -1,0 +1,2 @@
+$('.row.comments').slideUp().addClass('hide');
+$(".row[data-rev-id=<%= @review.id %>]").slideDown().removeClass('hide').first().empty().append("<%=j render :partial => 'comments/index', :object => @comments %>");

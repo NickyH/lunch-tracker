@@ -1,6 +1,5 @@
-/ = text_area_tag :comment_content
-/ = link_to_function('Submit', 'app.submit_comment_form(this)')
-/ = hidden_field_tag 'rev_id', id
-/ = button_to_function('Cancel', 'app.cancel_comment_form()')
-
-hello
+.comment_form
+  = text_area_tag :comment_content
+  = link_to_function('Submit', 'app.submit_comment_form(this)', :class => 'button submit_btn')
+  = hidden_field_tag 'rev_id', id
+  = link_to_function('Cancel', 'app.cancel_comment_form()', :class => 'button cancel_btn')

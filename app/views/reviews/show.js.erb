@@ -1,6 +1,7 @@
 $('.row.reviews').slideUp().addClass('hide');
-$(".row[data-rest-id=<%= @restaurant.id %>]").removeClass('hide');
+$(".row[data-rest-id=<%= @restaurant.id %>]").slideDown().removeClass('hide');
 $(".show_review_content").removeClass('hide');
 $(".comment_link").removeClass('hide');
+
 
 

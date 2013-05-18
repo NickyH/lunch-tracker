@@ -8,6 +8,11 @@
   color: #F2E9D8;
 }
 
+::-webkit-input-placeholder {
+   color: grey;
+   opacity: 0.7;
+}
+
 body{
 background-color: #F2E9D8;
 }
@@ -90,17 +95,18 @@ h1{
 .logo
 {
   font-size: 30px;
-  color: #AAC1B9;
+  color: #4DF26C;
   display: inline-block;
   float: right;
   margin-right: 20px;
   padding: 5px;
   text-align: right;
-  text-shadow: 1px 2px 2px #0B8277;
+  text-shadow: 2px 3px 2px #0B8277;
 }
 
-.links
+.links a
 {
+  color: #7EF256;
   display: block;
   width: 100%;
   font: 8px;
@@ -156,6 +162,65 @@ h1{
   min-height: 0;
   font-family: arial;
   line-height: 15px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.reviews
+{
+  padding-left: 5%;
+}
+
+#review_content
+{
+  width: 90%;
+  margin-left: 0;
+  margin-top: 10px;
+}
+
+#comment_content
+{
+  width: 90%;
+  margin-left: 0;
+  margin-top: 10px;
+}
+
+.comment_div
+{
+  width: 80%;
+  background-color: #8094A6;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 12px;
+  min-height: 0;
+  font-family: arial;
+  line-height: 15px;
+  border-top: 1px solid #5D718C;
+  margin-top: 10px;
+  margin-left: 5%;
+}
+
+.show_review_content, .comment_link
+{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.comment_link a
+{
+  color: #7EF256;
+}
+
+.comment_form
+{
+  width: 70%;
+  display: inline-block;
+  float: right;
+}
+
+.comments
+{
+  padding-left: 5%;
 }
 
 #key
@@ -180,11 +245,6 @@ h1{
 {
   font-size: 17px;
   margin-bottom: 5px;
-}
-
-.comment_div
-{
-  background-color: #D9D1BA;
 }
 
 .tag_button
