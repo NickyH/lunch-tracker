@@ -5,7 +5,6 @@ gem 'pg'
 gem 'jquery-rails'
 gem 'bcrypt-ruby'
 gem 'haml'
-gem 'stamp'
 gem 'geocoder'
 
 group :assets do
