@@ -6,3 +6,12 @@ development:
   host: localhost
   username: nickyhughes
   password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: lunch-tracker_test
+  pool: 5
+  host: localhost
+  username: nickyhughes
+  password:

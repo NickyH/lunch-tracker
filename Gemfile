@@ -1,4 +1,4 @@
- source 'https://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'rails'
 gem 'pg'
@@ -15,8 +15,13 @@ group :assets do
 end
 
 group :development, :test do
+  gem 'selenium-webdriver'
   gem 'coffee-rails-source-maps'
+  gem 'guard-rspec'
   gem 'rb-fsevent'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
   gem 'database_cleaner'
   gem 'pry-rails'
   gem 'pry-debugger'

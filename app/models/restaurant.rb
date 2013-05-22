@@ -17,6 +17,7 @@ class Restaurant < ActiveRecord::Base
   has_many :visits
   has_many :reviews
   has_and_belongs_to_many :tags
+  validates :name, :presence => true
   before_save :geocode
 
   def self.validate_address(address)
