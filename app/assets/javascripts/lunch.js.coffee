@@ -126,7 +126,7 @@ window.app =
         data: data
         url: "/users"
       $.ajax(settings)
-      $('#user_form').empty()
+      $('#user_form').slideUp().empty()
       app.selected_address = null
 
   validate_address: ->
@@ -187,8 +187,9 @@ window.app =
 
   submit_review_form: (e) ->
     restaurant_id = $(e).next('#rev_rest_id').val()
-    content = $(e).prev('#review_content').val()
-    data = { restaurant_id: restaurant_id, content: content }
+    content = $(e).prev().prev('#review_content').val()
+    value_rating = $(e).prev('#value_dropdown').val()
+    data = { restaurant_id: restaurant_id, content: content, value_rating:value_rating }
     settings =
       dataType: 'script'
       method: 'post'

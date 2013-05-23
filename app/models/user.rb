@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_secure_password
   validates :email, :uniqueness => true
+  before_save :geocode
 
   def self.validate_user_address(address)
     valid_address = Geocoder.search(address).first

@@ -20,6 +20,13 @@ class Restaurant < ActiveRecord::Base
   validates :name, :presence => true
   before_save :geocode
 
+  def update_average_value(value)
+    number_of_reviews = self.reviews.length
+    new_value = (self.value_rating + value)/number_of_reviews
+    self.value_rating = new_value
+    self.save
+  end
+
   def distance_from_user(address)
     user_address = Geocoder.search(address).first
     if user_address.present?

@@ -19,6 +19,7 @@
           .text1.address_link= link_to(restaurant.address, '#', :remote => true, :'data-address-id' => "address#{restaurant.id}")
           .text2= "#{restaurant.distance_from_user(@auth.address)}  mi" if @auth.present?
           .text2= link_to(restaurant.cuisine, "restaurants/filter/cuisine/#{restaurant.cuisine}", :remote => true)
+          .text2= link_to("Value #{restaurant.value_rating}/10", value_restaurants_path, :remote => true)
         .large-3.columns
           - restaurant.tags.each do |tag|
             = link_to tag.tag_symbol, filter_restaurants_path(tag.id), :remote => true, :id => "#{tag.name}", :class => "tagbutton #{tag.name}"

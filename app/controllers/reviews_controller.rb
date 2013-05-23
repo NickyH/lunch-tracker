@@ -9,8 +9,14 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
   def create
-    review = Review.create(content:params[:content])
+    if params[:value_rating] == ''
+      value_rating = 5
+    else
+      value_rating = params[:value_rating].to_i
+    end
+    review = Review.create(content:params[:content], value_rating:value_rating)
     @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant.update_average_value(value_rating)
     @restaurant.reviews << review
     @restaurants = Restaurant.order(:name)
     render 'restaurants/index'

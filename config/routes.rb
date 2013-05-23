@@ -11,6 +11,7 @@ LunchTracker::Application.routes.draw do
       get 'validate_address'
       get 'filter/:tag_id', :action => :filter, :as => :filter
       get 'filter/cuisine/:cuisine', :action => :filter, :as => :filter
+      get 'value' => 'restaurants#value'
       put '/toggle_thumb/:id' => 'restaurants#toggle_thumb'
     end
   end

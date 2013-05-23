@@ -9,7 +9,6 @@ class RestaurantsController < ApplicationController
     address_to_validate = params[:query]
     @found_address = Restaurant.validate_address(address_to_validate)
   end
-
   def create
     @tags = params[:tags].uniq if params[:tags].present?
     if !params[:name].nil?
@@ -45,6 +44,9 @@ class RestaurantsController < ApplicationController
     if params[:cuisine].present?
       @restaurants = Restaurant.where(:cuisine => params[:cuisine])
     end
+  end
+  def value
+    @restaurants = Restaurant.order(:value_rating).reverse
   end
   def search
   query = params[:query]
