@@ -6,6 +6,8 @@ window.app =
   ready: ->
     app.token = $('#auth_token').data('auth-token')
     $('body').on('keyup', '#search', app.filter_restaurants)
+    $('#rest_form').slideUp().empty()
+    $('#user_form').slideUp().empty()
 
   filter_restaurants: (e) ->
     query = $('#search').val()
@@ -53,6 +55,12 @@ window.app =
     app.selected_address = null
     $('.tagbutton').css('border', 'none')
     app.tags = []
+    $('#valid_address').removeClass('address_selected')
+
+  cancel_user_form: ->
+    $('#user_form').slideUp().empty()
+    app.selected_address = null
+    $('#user_valid_address').removeClass('address_selected')
 
   select_tag: (selected_tag) ->
     if $(selected_tag).parent().hasClass('selected')
@@ -102,6 +110,25 @@ window.app =
       app.selected_address = null
       app.tags = []
 
+  create_user:(e)->
+    if app.selected_address == null
+      $('#address_not_selected').removeClass('hide')
+    else
+      name = $('#user_name').val()
+      email = $('#user_email').val()
+      password = $('#user_password').val()
+      password_confirmation = $('#user_password_confirmation').val()
+      address = app.selected_address
+      data = {address: address, name:name, email:email, password:password, password_confirmation:password_confirmation}
+      settings =
+        dataType: 'script'
+        method: 'POST'
+        data: data
+        url: "/users"
+      $.ajax(settings)
+      $('#user_form').empty()
+      app.selected_address = null
+
   validate_address: ->
     console.log('validate')
     address = $('#approx_address').val()
@@ -111,9 +138,27 @@ window.app =
       url: "/restaurants/validate_address?query=#{address}"
     $.ajax(settings)
 
+  validate_user_address: ->
+    address = $('#approx_user_address').val()
+    console.log(address)
+    settings =
+      dataType: 'script'
+      type: 'get'
+      url: "/users/validate_user_address?query=#{address}"
+    $.ajax(settings)
+
   select_address: ->
-    console.log('select')
     app.selected_address = $('#valid_address').text()
+    $('#valid_address').css('color', 'black')
+    $('.hide_when_found').slideUp().hide()
+    $('#valid_address').css('border', '1px solid green').css('height', '33px').css('line-height', '33px').css('text-indent','10px').css('background-color', '#C0D0D9')
+
+  select_user_address: ->
+    app.selected_address = $('#user_valid_address').text()
+    $('#user_valid_address').css('color', 'black')
+    $('.hide_when_found').slideUp().hide()
+    $('#user_valid_address').css('border', '1px solid green').css('height', '33px').css('line-height', '33px').css('text-indent','10px').css('background-color', '#C0D0D9')
+
 
   show_reviews: (id) ->
     restaurant_id = id

@@ -1,9 +1,11 @@
 .row
   .large-6.columns
     = text_field_tag 'name', nil, :autofocus => true, :placeholder => 'Restaurant Name'
-    = text_field_tag :approx_address, nil, :placeholder => 'Address'
-    = button_to_function('Find', 'app.validate_address()', :class => 'button find_btn')
+    .hide_when_found= text_field_tag :approx_address, nil, :placeholder => 'Address'
+    .hide_when_found= button_to_function('Find', 'app.validate_address()', :class => 'button find_btn')
     #show_address= render 'found_address' if @found_address.present?
+.row
+  .large-6.columns
     #tagform
       Select Tags:
       .tagbutton.vegetarian= link_to_function('V', 'app.select_tag(this)', :id => 'veg', :title => 'vegetarian')

@@ -2,5 +2,5 @@
   #address_not_valid_text= 'Not a valid address, please re-enter a valid street address'
 - else
   #valid_address= @found_address.join(' ')
-  #instruct= 'Press select if this is the correct address'
-  = link_to_function('Select', 'app.select_address()', :class => 'button submit_btn')
+  .hide_when_found= link_to_function('Select', 'app.select_address()', :class => 'button select_btn')
+  #instruct.hide_when_found= 'Press select if this is the correct address'

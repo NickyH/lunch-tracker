@@ -19,4 +19,28 @@ class User < ActiveRecord::Base
   has_many :comments
   has_secure_password
   validates :email, :uniqueness => true
+
+  def self.validate_user_address(address)
+    valid_address = Geocoder.search(address).first
+    short_address = []
+    if valid_address.nil?
+      short_address = 'none'
+    else
+      valid_address.address_components.each do |a|
+        short_address << a["short_name"]
+      end
+    end
+    return short_address
+  end
+  private
+
+  def geocode
+    result = Geocoder.search(self.address).first
+
+    if result.present?
+      self.lat = result.latitude
+      self.long = result.longitude
+    end
+  end
+
 end

@@ -9,12 +9,12 @@ u1 = User.create(name: 'Admin', email: 'admin@gmail.com', password: 'a', passwor
 u2 = User.create(name: 'Danni', email: 'danni@gmail.com', password: 'a', password_confirmation: 'a', address: '568 Broadway Manhattan', lat: 40.724364, long: -73.997458)
 u3 = User.create(name: 'Lizzy', email: 'lizzy@gmail.com', password: 'a', password_confirmation: 'a', address: '568 Broadway Manhattan', lat: 40.724364, long: -73.997458)
 
-r1 = Restaurant.create(name: 'The Mercer Kitchen', address: '99 Prince Street, New York', lat: 40.724750, long: -73.998719, value_rating: 5)
-r2 = Restaurant.create(name: 'Macbar', address: '54 Prince Street, New York', lat: 40.723505, long: -73.996175, value_rating: 7)
-r3 = Restaurant.create(name: 'Prince Street Cafe', address: '26 Prince Street, New York', lat: 40.722837, long: -73.994686, value_rating: 9)
-r4 = Restaurant.create(name: "Jo's", address: '264 Elizabeth Street, New York', lat: 40.724055, long: -73.993470, value_rating: 6)
-r5 = Restaurant.create(name: 'Fiat Cafe', address: '203 Mott Street, New York', lat: 40.721444, long: -73.995617, value_rating: 5)
-r6 = Restaurant.create(name: 'Back Forty West', address: '70 Prince Street, New York', lat: 40.723697, long: -73.996986, value_rating: 8)
+r1 = Restaurant.create(name: 'The Mercer Kitchen', address: '99 Prince Street, New York', lat: 40.724750, long: -73.998719, value_rating: 5, cuisine: 'Modern')
+r2 = Restaurant.create(name: 'Macbar', address: '54 Prince Street, New York', lat: 40.723505, long: -73.996175, value_rating: 7, cuisine: 'Modern')
+r3 = Restaurant.create(name: 'Prince Street Cafe', address: '26 Prince Street, New York', lat: 40.722837, long: -73.994686, value_rating: 9, cuisine: 'French')
+r4 = Restaurant.create(name: "Jo's", address: '264 Elizabeth Street, New York', lat: 40.724055, long: -73.993470, value_rating: 6, cuisine: 'Greek')
+r5 = Restaurant.create(name: 'Fiat Cafe', address: '203 Mott Street, New York', lat: 40.721444, long: -73.995617, value_rating: 5, cuisine: 'Italian')
+r6 = Restaurant.create(name: 'Back Forty West', address: '70 Prince Street, New York', lat: 40.723697, long: -73.996986, value_rating: 8, cuisine: 'Italian')
 
 t1 = Tag.create(name: 'vegetarian', tag_symbol: 'V')
 t2 = Tag.create(name: 'fast', tag_symbol: 'F')

@@ -28,6 +28,11 @@ h1{
   font-weight: 300px;
 }
 
+#search
+{
+  margin-top: 50px;
+}
+
 #underlay
 {
   background-color: #4C6173;
@@ -41,25 +46,86 @@ h1{
   padding-bottom: 50px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
+}
 
+#approx_user_address
+{
+  width: 80%;
+  display:inline-block;
+  float: left;
+}
+
+#approx_address
+{
+  width: 80%;
+  display:inline-block;
+  float: left;
 }
 
 #address_not_valid_text
 {
   color: red;
   margin: 10px 0 10px 0;
+  width: 100%;
+  display: block;
+  float: left;
+  min-height: 30px;
+}
+
+#user_address_not_valid_text
+{
+  color: red;
+  margin: 10px 0 10px 0;
+  width: 100%;
+  display: block;
+  float: left;
+  min-height: 30px;
 }
 
 #valid_address
 {
-  color: #4DF26C;
+  color: #BCF277;
   margin: 10px 0 10px 0;
+  width: auto;
+  display: inline-block;
+  float: left;
+  min-height: 30px;
 }
+
+#user_valid_address
+{
+  color: #BCF277;
+  margin: 10px 0 10px 0;
+  width: auto;
+  display: inline-block;
+  float: left;
+  min-height: 30px;
+}
+
 
 #instruct
 {
   margin: 10px 0 10px 0;
   display: block;
+  width: 100%;
+  display: block;
+  float: left;
+  min-height: 30px;
+}
+
+#user_instruct
+{
+  margin: 10px 0 10px 0;
+  display: block;
+  width: 100%;
+  display: block;
+  float: left;
+  min-height: 30px;
+}
+
+.address_selected
+{
+  color: #8DBF41;
 }
 
 #nav
@@ -281,14 +347,32 @@ a
   margin-bottom: 20px;
 }
 
-#rest_form
+#user_form
 {
-  width: 100%;
-  height: auto;
-  margin-right: auto;
-  margin-left: auto;
+  width: 50%;
+  margin-left: 50px;
   margin-top: 20px;
   margin-bottom: 20px;
+  padding-top: 50px;
+  border-radius: 10px;
+}
+
+#rest_form
+{
+  width: 80%;
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-top: 50px;
+  border-radius: 10px;
+}
+
+.buttons_space
+{
+  height: 50px;
+  width: 100%;
+  display: block;
+  margin: 5px 0 5px 0;
 }
 
 .cancel_btn
@@ -300,7 +384,8 @@ a
   font-size: 8px;
   vertical-align: middle;
   border: none;
-  margin: 5px 5px 0 0;
+  margin: 20px 5px 20px 10px;
+  float: right;
 }
 
 .cancel_btn:hover
@@ -317,7 +402,22 @@ a
   font-size: 8px;
   vertical-align: middle;
   border: none;
-  margin: 5px 5px 0 0;
+  margin: 20px 5px 20px 10px;
+  float: right;
+}
+
+.select_btn
+{
+  background-color: #3D83F2;
+  width: 60px;
+  height: 20px;
+  border-radius: 5px;
+  font-size: 8px;
+  vertical-align: middle;
+  border: none;
+  margin: 20px 5px 20px 30px;
+  float: left;
+  display: inline-block;
 }
 
 .submit_btn:hover
@@ -334,7 +434,9 @@ a
   font-size: 8px;
   vertical-align: middle;
   border: none;
-  margin: 5px 5px 0 0;
+  margin: 5px 5px 15px 10px;
+  display: inline-block;
+  float: left;
 }
 
 .find_btn:hover

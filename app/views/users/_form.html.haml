@@ -1,0 +1,14 @@
+.row
+  .large-1.columns
+  .large-10.columns
+    = text_field_tag 'user_name', nil, :autofocus => true, :placeholder => 'Name'
+    = text_field_tag 'user_email', nil, :placeholder => 'Email'
+    = password_field_tag 'user_password', nil, :autofocus => true, :placeholder => 'Password'
+    = password_field_tag 'user_password_confirmation', nil, :autofocus => true, :placeholder => 'Password'
+    .hide_when_found= text_field_tag :approx_user_address, nil, :placeholder => 'Address'
+    .hide_when_found= button_to_function('Find', 'app.validate_user_address()', :class => 'button find_btn')
+    #show_user_address= render 'found_user_address' if @found_user_address.present?
+    .buttons_space
+      = button_to_function('Cancel', 'app.cancel_user_form()', :class => 'button cancel_btn')
+      = button_to_function('Add', 'app.create_user()', :class => 'button submit_btn')
+  .large-1.columns

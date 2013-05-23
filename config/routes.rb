@@ -10,6 +10,7 @@ LunchTracker::Application.routes.draw do
       get 'search'
       get 'validate_address'
       get 'filter/:tag_id', :action => :filter, :as => :filter
+      get 'filter/cuisine/:cuisine', :action => :filter, :as => :filter
       put '/toggle_thumb/:id' => 'restaurants#toggle_thumb'
     end
   end
@@ -25,6 +26,13 @@ LunchTracker::Application.routes.draw do
     collection do
       get '/show/:restaurant_id' => 'reviews#show'
       get '/new/review/:restaurant_id' => 'reviews#new'
+    end
+  end
+
+  resources :users, :only => [:create, :new] do
+    collection do
+      get 'validate_user_address'
+      get 'select_user_address'
     end
   end
 

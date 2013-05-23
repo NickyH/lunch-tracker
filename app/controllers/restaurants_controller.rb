@@ -38,12 +38,17 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
   end
   def filter
-  tag = Tag.find(params[:tag_id])
-  @restaurants = tag.restaurants
+    if params[:tag_id].present?
+      tag = Tag.find(params[:tag_id])
+      @restaurants = tag.restaurants
+    end
+    if params[:cuisine].present?
+      @restaurants = Restaurant.where(:cuisine => params[:cuisine])
+    end
   end
   def search
   query = params[:query]
-  @restaurants = Restaurant.where("name @@ :q", :q => query)
+  @restaurants = Restaurant.where("name @@ :q or cuisine @@ :q", :q => query)
   render :filter
   end
   def toggle_thumb

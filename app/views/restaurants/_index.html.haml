@@ -16,8 +16,9 @@
             .edit_delete= link_to('Delete', restaurant_path(restaurant.id), :method => 'delete', :confirm => 'This will delete the restaurant. Click OK to continue', :remote => true) if @auth.is_admin?
             #toggle_thumb= render :partial => 'restaurants/thumb', :locals => { :restaurant_id => restaurant.id, :thumb => restaurant.thumbs_down } if @auth.is_admin?
         .large-4.columns
-          .text1.address_link= link_to(restaurant.address, "#", :remote => true, :'data-address-id' => "address#{restaurant.id}")
+          .text1.address_link= link_to(restaurant.address, '#', :remote => true, :'data-address-id' => "address#{restaurant.id}")
           .text2= "#{restaurant.distance_from_user(@auth.address)}  mi" if @auth.present?
+          .text2= link_to(restaurant.cuisine, "restaurants/filter/cuisine/#{restaurant.cuisine}", :remote => true)
         .large-3.columns
           - restaurant.tags.each do |tag|
             = link_to tag.tag_symbol, filter_restaurants_path(tag.id), :remote => true, :id => "#{tag.name}", :class => "tagbutton #{tag.name}"

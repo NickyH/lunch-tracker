@@ -1,0 +1,6 @@
+- if @found_user_address == 'none'
+  #user_address_not_valid_text= 'Not a valid address, please re-enter a valid street address'
+- else
+  #user_valid_address= @found_user_address.join(' ')
+  .hide_when_found= link_to_function('Select', 'app.select_user_address()', :class => 'button select_btn')
+  #user_instruct.hide_when_found= 'Press select if this is the correct address'
