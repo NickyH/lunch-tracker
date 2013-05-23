@@ -1,4 +1,4 @@
-= text_area_tag :review_content
+= text_area_tag :review_content, nil, :autofocus => true, :placeholder => "What did you think of #{@restaurant.name}?"
 = select_tag :value_dropdown, options_for_select(1..10), :prompt => "Value Rating"
 = link_to_function('Submit', 'app.submit_review_form(this)', :class => 'button submit_btn')
 = hidden_field_tag 'rev_rest_id', @restaurant.id
