@@ -48,20 +48,28 @@ class RestaurantsController < ApplicationController
   def value
     @restaurants = Restaurant.order(:value_rating).reverse
   end
-  def search
+  def distance
+    @restaurants = Restaurant.all
+    hash = Hash.new
+    @restaurants.each do |restaurant|
+      hash[restaurant.distance_from_user(@auth.address)] = restaurant
+    end
+    @restaurants = hash.sort_by {|key, value| value }.map!{|a| a[1]}
+  end
+def search
   query = params[:query]
   @restaurants = Restaurant.where("name @@ :q or cuisine @@ :q", :q => query)
   render :filter
+end
+def toggle_thumb
+  restaurant = Restaurant.find(params[:id])
+  if restaurant.thumbs_down == false
+    restaurant.thumbs_down = true
+  else
+    restaurant.thumbs_down = false
   end
-  def toggle_thumb
-    restaurant = Restaurant.find(params[:id])
-    if restaurant.thumbs_down == false
-      restaurant.thumbs_down = true
-    else
-      restaurant.thumbs_down = false
-    end
-    restaurant.save
-    @restaurants = Restaurant.order(:name)
-    render :index
-  end
+  restaurant.save
+  @restaurants = Restaurant.order(:name)
+  render :index
+end
 end

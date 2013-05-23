@@ -17,7 +17,7 @@
             #toggle_thumb= render :partial => 'restaurants/thumb', :locals => { :restaurant_id => restaurant.id, :thumb => restaurant.thumbs_down } if @auth.is_admin?
         .large-4.columns
           .text1.address_link= link_to(restaurant.address, '#', :remote => true, :'data-address-id' => "address#{restaurant.id}")
-          .text2= "#{restaurant.distance_from_user(@auth.address)}  mi" if @auth.present?
+          .text2= link_to("#{restaurant.distance_from_user(@auth.address)}  mi", distance_restaurants_path, :remote => true )if @auth.present?
           .text2= link_to(restaurant.cuisine, "restaurants/filter/cuisine/#{restaurant.cuisine}", :remote => true)
           .text2= link_to("Value #{restaurant.value_rating}/10", value_restaurants_path, :remote => true)
         .large-3.columns
