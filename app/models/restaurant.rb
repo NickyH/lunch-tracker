@@ -21,8 +21,9 @@ class Restaurant < ActiveRecord::Base
   before_save :geocode
 
   def update_average_value(value)
-    number_of_reviews = self.reviews.length
-    new_value = (self.value_rating + value)/number_of_reviews
+    number_of_reviews = self.reviews.length + 1
+    values = self.reviews.map{|r| r.value_rating }
+    new_value = (values.inject{|sum,x| sum + x } / number_of_reviews).round
     self.value_rating = new_value
     self.save
   end
